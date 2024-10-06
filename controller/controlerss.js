@@ -1,11 +1,34 @@
-const product_table = require ('../model/ProdMod');
+const shoes = require ('../model/ProdMod');
+const jewelry = require ('../model/jewel');
+const fash = require ('../model/fashh.js');
+
+
 
 const m = {
-
-main:(req, res) => {
-   res.render('index', { title: 'index' });
-
+   main:(req, res) => {
+      res.render('index', { title: 'index' });
 },
+
+sh:(req, res) => {
+   shoes.getAll((err, result)=> {
+      if(err) throw err;
+      res.render('Shoes', { shoes: result });
+   })
+ },
+
+js:(req, res) => {
+   jewelry.getAll((err, result)=> {
+      if(err) throw err;
+      res.render('Jewellry', { jewelry: result });
+   })
+ },
+
+fs:(req, res) => {
+   fash.getAll((err, result)=> {
+      if(err) throw err;
+      res.render('Fashion', { fash: result });
+   })
+   },
 
 bseller:(req, res) => {
 res.render('bestseller', { title: 'bestseller' });
@@ -15,23 +38,14 @@ addprof:(req, res) => {
     res.render('addProf', { title: 'addProf' });
     },
 
-fs:(req, res) => {
-    res.render('Fashion', { title: 'Fashion' });
-    },
+
 
 home:(req, res) => {
     res.render('index', { title: 'index' });
     },
- js:(req, res) => {
-    res.render('Jewellry', { title: 'Jewellry' });
- },
+ 
 
-sh:(req, res) => {
-   product_table.getall((err, result) => {
-      if (err) throw err;
-      res.render('Shoes', { product_table: result });
-   })
- },
+
 
  cr:(req, res) => {
     res.render('cart', { title: 'cart' });
