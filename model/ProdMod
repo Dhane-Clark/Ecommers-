@@ -1,0 +1,14 @@
+const db = require('../config/db'); // Import the database connection
+
+const main = {
+    getall:(callback) => {
+        const query = "select * from product_table ";
+        db.query(query, callback)
+    },
+    getall:(callback) => {
+        const query = "select * from product_table ";
+        db.query(query, callback)
+    }
+}
+
+module.exports= main ;
